@@ -2,6 +2,7 @@
 
 */
 
+//Pin values and Locations
 
 loop(true){
 	if(buttonPress == True){
