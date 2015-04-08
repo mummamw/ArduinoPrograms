@@ -1,0 +1,11 @@
+/*variables declaring outputs
+
+*/
+
+
+loop(true){
+	if(buttonPress == True){
+		wait(rand);
+		servo.start();
+	}
+}
