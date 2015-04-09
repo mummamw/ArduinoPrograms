@@ -48,6 +48,7 @@ Parts
                               // a maximum of eight servo objects can be created
     //Button Section
         int buttonState = 0;  // variable for reading the pushbutton status
+        int buttonState3 = 0;
         //int buttonState2 = 0;  //Second button Switch status
 
 //==================Setup======================================================
@@ -70,8 +71,9 @@ void loop(){
 		digitalWrite(ledPin, HIGH); 
                 
                 delay(random(5000,20000));
-                
-                if (buttonState == HIGH){
+                 
+                buttonState3 = digitalRead(buttonPin);
+                if (buttonState3 == HIGH){
                     digitalWrite(ledPin, LOW);
                     delay(500);
                     digitalWrite(ledPin, HIGH);
