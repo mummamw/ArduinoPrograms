@@ -48,7 +48,7 @@ Parts
                               // a maximum of eight servo objects can be created
     //Button Section
         int buttonState = 0;  // variable for reading the pushbutton status
-        int buttonState2 = 0;  //Second button Switch status
+        //int buttonState2 = 0;  //Second button Switch status
 
 //==================Setup======================================================
 
@@ -57,25 +57,28 @@ void setup() {
 	 
     pinMode(ledPin, OUTPUT);    // initialize the LED pin as an output:
     pinMode(buttonPin, INPUT);  // initialize the pushbutton pin as an input:
-    pinMode(buttonPin2, INPUT);  //Second pushbutton pin set as an input:
+    //pinMode(buttonPin2, INPUT);  //Second pushbutton pin set as an input:
     
 }
 
 void loop(){
 
     buttonState = digitalRead(buttonPin);    //read the state of the pushButton value
-    buttonState2 = digitalRead(buttonPin2);
+    //buttonState2 = digitalRead(buttonPin2);
 
 	if (buttonState == HIGH) { 
-		//wait(rand);  //fake
 		digitalWrite(ledPin, HIGH); 
                 
                 delay(random(5000,20000));
                 
-                if (buttonState2 == HIGH){
+                if (buttonState == HIGH){
+                    digitalWrite(ledPin, LOW);
+                    delay(500);
+                    digitalWrite(ledPin, HIGH);
+                    delay(500);
+                    digitalWrite(ledPin, LOW);
                     while(true){
-                      break;
-                    }
+                    }                            //Infinite loop to stop program
                 }
                 
                 delay(5000);
