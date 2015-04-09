@@ -14,6 +14,16 @@ Parts
   (1) Red LED
   (2) Push buttons
   (1) Cable for Arduino to USB
+
+ Wiring/ Variables explained
+   <Button Code>
+	   LED attached from pin 13 to ground 
+	   pushbutton attached to pin 2 from +5V
+	   10K resistor attached to pin 2 from ground
+	<Servo Code>
+	   Red = +5v
+       Brown = GND
+       Orange = Signal (pin 9 for this code)
 */
 //==================Includes===================================================
 
@@ -32,20 +42,28 @@ Parts
 
 //==================Objects - variables========================================
     //Servo Section
-        int pos = 0;    // variable to store the servo position
-        Servo myservo;  // create servo object to control a servo
-                        // a maximum of eight servo objects can be created
-
+        int pos = 0;          // variable to store the servo position
+        Servo myservo;        // create servo object to control a servo
+                              // a maximum of eight servo objects can be created
+    //Button Section
+        int buttonState = 0;  // variable for reading the pushbutton status
 
 //==================Setup======================================================
 
 void setup() {
-	myservo.attach(9);   // attaches the servo on pin 9 to the servo object
+	myservo.attach(9);          // attaches the servo on pin 9 to the servo object
+	 
+    pinMode(ledPin, OUTPUT);    // initialize the LED pin as an output:
+    pinMode(buttonPin, INPUT);  // initialize the pushbutton pin as an input:
 }
 
 void loop(){
-	if(buttonPress == True){
-		wait(rand);
+
+    buttonState = digitalRead(buttonPin);    //read the state of the pushButton value
+
+	if (buttonState == HIGH) { 
+		//wait(rand);  //fake
+		digitalWrite(ledPin, HIGH); 
 		for(pos = 0; pos < 180; pos += 1)  {                                  
             myservo.write(pos);              // tell servo to go to position in variable 'pos'
             delay(15);                       // waits 15ms for the servo to reach the position
@@ -54,5 +72,8 @@ void loop(){
             myservo.write(pos);              // tell servo to go to position in variable 'pos'
             delay(15);                       // waits 15ms for the servo to reach the position
         }
+	}
+	else  {
+		digitalWrite(ledPin, LOW);
 	}
 }
