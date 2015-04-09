@@ -47,6 +47,7 @@ Parts
                               // a maximum of eight servo objects can be created
     //Button Section
         int buttonState = 0;  // variable for reading the pushbutton status
+        int buttonState2 = 0;  //Second button Switch status
 
 //==================Setup======================================================
 
@@ -64,15 +65,18 @@ void loop(){
 	if (buttonState == HIGH) { 
 		//wait(rand);  //fake
 		digitalWrite(ledPin, HIGH); 
+                
+                delay(random(5000,20000));
+                
 		for(pos = 0; pos < 180; pos += 1)  {                                  
-            myservo.write(pos);              // tell servo to go to position in variable 'pos'
-            delay(15);                       // waits 15ms for the servo to reach the position
-        }
-        for(pos = 180; pos>=1; pos-=1)  {
-            myservo.write(pos);              // tell servo to go to position in variable 'pos'
-            delay(15);                       // waits 15ms for the servo to reach the position
-        }
-	}
+                    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+                    delay(15);                       // waits 15ms for the servo to reach the position
+                }
+                for(pos = 180; pos>=1; pos-=1)  {
+                    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+                    delay(15);                       // waits 15ms for the servo to reach the position
+                }
+	} 
 	else  {
 		digitalWrite(ledPin, LOW);
 	}
