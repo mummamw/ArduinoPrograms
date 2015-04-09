@@ -37,6 +37,7 @@ Parts
     //Orange = Signal (pin 9 for this code)
   
   //Button Section
+    const int buttonPin2 = 3;
     const int buttonPin = 2;
     const int ledPin =  13;
 
@@ -56,11 +57,14 @@ void setup() {
 	 
     pinMode(ledPin, OUTPUT);    // initialize the LED pin as an output:
     pinMode(buttonPin, INPUT);  // initialize the pushbutton pin as an input:
+    pinMode(buttonPin2, INPUT);  //Second pushbutton pin set as an input:
+    
 }
 
 void loop(){
 
     buttonState = digitalRead(buttonPin);    //read the state of the pushButton value
+    buttonState2 = digitalRead(buttonPin2);
 
 	if (buttonState == HIGH) { 
 		//wait(rand);  //fake
@@ -68,6 +72,13 @@ void loop(){
                 
                 delay(random(5000,20000));
                 
+                if (buttonState2 == HIGH){
+                    while(true){
+                      break;
+                    }
+                }
+                
+                delay(5000);
 		for(pos = 0; pos < 180; pos += 1)  {                                  
                     myservo.write(pos);              // tell servo to go to position in variable 'pos'
                     delay(15);                       // waits 15ms for the servo to reach the position
